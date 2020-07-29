@@ -18,6 +18,9 @@ class JDBCSinkTest {
 
     env.setParallelism(1)
 
+    //设置时间
+//    env.setStreamTimeCharacteristic(TimeCharacteristic.EVENT_TIME)
+
     val inputStream = env.readTextFile("D:\\java-work\\FlinkDemo\\src\\main\\resources\\sensor.txt")
 
     val streamData = inputStream.map(data => {
@@ -62,7 +65,7 @@ class MyJdbcSink extends RichSinkFunction[SensorReading] {
   }
 
   //关闭连接
-  override def clone(): Unit = {
+  override def close(): Unit = {
     insertStmt.close()
     updateStmt.close()
     conn.close()

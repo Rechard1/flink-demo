@@ -35,7 +35,7 @@ object KafkaSinkTest {
     })
 
     // Sink into Kafka
-    dataStream.addSink(new FlinkKafkaProducer011[String]("kafka_sink_test", new SimpleStringSchema(), properties))
+//    dataStream.addSink(new FlinkKafkaProducer011[String]("kafka_sink_test", new SimpleStringSchema(), properties))
 
     dataStream.print()
 
